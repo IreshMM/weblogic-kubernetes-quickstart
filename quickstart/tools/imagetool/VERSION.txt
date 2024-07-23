@@ -1,0 +1,1 @@
+WebLogic Image Tool 1.13.2
