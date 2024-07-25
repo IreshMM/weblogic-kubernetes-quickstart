@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sample-wl-ingress
+  namespace: sample-domain1-ns
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: admin.weblogic-demo.apps.kube.test.appinnov.nblrnd.biz
+    http:
+      paths:
+      - backend:
+          service:
+            name: sample-domain1-admin-server
+            port:
+              number: 7001
+        path: /
+        pathType: Prefix
+  - host: web.weblogic-demo.apps.kube.test.appinnov.nblrnd.biz
+    http:
+      paths:
+      - backend:
+          service:
+            name: sample-domain1-cluster-cluster-1
+            port:
+              number: 8001
+        path: /
+        pathType: Prefix
